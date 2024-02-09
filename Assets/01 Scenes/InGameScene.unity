@@ -187,7 +187,8 @@ MonoBehaviour:
   model: {fileID: 1844038371}
   animator: {fileID: 1844038372}
   maxSpeed: 2.5
-  deltaSpeed: 1
+  accelerateSpeed: 0.1
+  decelerateSpeed: 0.1
   runningSpeedRatio: 2.5
 --- !u!1 &745245956 stripped
 GameObject:
@@ -478,10 +479,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4016221617123975181, guid: fc2b394a5faba6340a05729db39a97bb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 775e7fd5c6aa57b41a8ac121a8513249, type: 2}
     - target: {fileID: 919132149155446097, guid: fc2b394a5faba6340a05729db39a97bb, type: 3}
       propertyPath: m_Name
       value: ch_model
       objectReference: {fileID: 0}
+    - target: {fileID: 5347475280926642745, guid: fc2b394a5faba6340a05729db39a97bb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a1b29d652aca2fb418838a9536639e49, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc2b394a5faba6340a05729db39a97bb, type: 3}
 --- !u!4 &1844038371 stripped
