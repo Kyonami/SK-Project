@@ -5,9 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 	[SerializeField]
+	private Transform model = null;
+	[SerializeField]
+	private Animator animator = null;
+	[SerializeField]
 	private float maxSpeed = 5f;
 	[SerializeField]
-	private float deltaSpeed = 0.05f;
+	private float accelerateSpeed = 0.1f;
+	[SerializeField]
+	private float decelerateSpeed = 0.1f;
 	[SerializeField]
 	private float runningSpeedRatio = 2f;
 
@@ -15,41 +21,46 @@ public class Player : MonoBehaviour
 	private float currentMaxSpeed = 5f;
 	private sbyte direction = 0;
 
-		
-	private bool IsRight()
-	{
-		return direction == 1;
-	}
-
-	private bool IsLeft()
-	{
-		return direction == -1;
-	}
 
 	// Update is called once per frame
 	private void Update()
 	{
-		currentMaxSpeed = Input.GetKey(KeyCode.LeftShift) ? maxSpeed * runningSpeedRatio : maxSpeed;
-
-		if (!IsRight() && Input.GetKey(KeyCode.LeftArrow))
+		if(Input.GetKey(KeyCode.LeftShift))
 		{
-			direction = -1;
-			if (currentSpeed < -currentMaxSpeed)	// max 속도로 맞춰주는 과정
-				currentSpeed += deltaSpeed;
-			else
-				currentSpeed -= deltaSpeed;
-		}
-		else if(!IsLeft() && Input.GetKey(KeyCode.RightArrow))
-		{
-			direction = 1;
-			if (currentMaxSpeed < currentSpeed)		// max 속도로 맞춰주는 과정
-				currentSpeed -= deltaSpeed;
-			else
-				currentSpeed += deltaSpeed;
+			animator.SetBool("isRunning", true);
+			currentMaxSpeed = maxSpeed * runningSpeedRatio;
 		}
 		else
 		{
-			currentSpeed += deltaSpeed * -direction;
+			animator.SetBool("isRunning", false);
+			currentMaxSpeed = maxSpeed;
+		}
+
+		if (!IsRight() && Input.GetKey(KeyCode.LeftArrow))
+		{
+			animator.SetBool("isMoving", true);
+			direction = -1;
+			if (currentSpeed < -currentMaxSpeed)	// max 속도로 맞춰주는 과정
+				currentSpeed += accelerateSpeed;
+			else
+				currentSpeed -= decelerateSpeed;
+
+			model.LookAt(model.position + Vector3.left);
+		}
+		else if(!IsLeft() && Input.GetKey(KeyCode.RightArrow))
+		{
+			animator.SetBool("isMoving", true);
+			direction = 1;
+			if (currentMaxSpeed < currentSpeed)		// max 속도로 맞춰주는 과정
+				currentSpeed -= accelerateSpeed;
+			else
+				currentSpeed += decelerateSpeed;
+			model.LookAt(model.position + Vector3.right);
+		}
+		else
+		{
+			animator.SetBool("isMoving", false);
+			currentSpeed += decelerateSpeed * -direction;
 			if ((IsLeft() && 0 <= currentSpeed) || (IsRight() && currentSpeed <= 0))
 			{
 				currentSpeed = 0;
@@ -61,4 +72,15 @@ public class Player : MonoBehaviour
 	{
 		transform.position += Vector3.right * Time.deltaTime * currentSpeed;
 	}
+
+	private bool IsRight()
+	{
+		return direction == 1;
+	}
+
+	private bool IsLeft()
+	{
+		return direction == -1;
+	}
+
 }
