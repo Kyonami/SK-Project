@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 
-public class Player : MonoBehaviour
+public class Character : MonoBehaviour
 {
 	[SerializeField]
 	private Transform model = null;
