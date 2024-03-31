@@ -75,7 +75,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7584504372079091460}
   - component: {fileID: 7584504372079091459}
-  - component: {fileID: 7584504372079091463}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -114,24 +113,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 7983523107439993806}
   animator: {fileID: 7584504372187890723}
-  maxSpeed: 2.5
+  maxSpeed: 1.5
   accelerateSpeed: 0.1
   decelerateSpeed: 0.1
-  runningSpeedRatio: 2.5
---- !u!136 &7584504372079091463
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7584504372079091576}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  runningSpeedRatio: 1.5
 --- !u!1 &7584504372239833980
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class SingleTon<T> : MonoBehaviour where T : MonoBehaviour
                 instance = FindObjectOfType(typeof(T)) as T;
                 firstInstance = true;
                 if (instance == null)
-                    Debug.Log("There is No Active '" + typeof(T) + "'in this Scene");
+                    Debug.Log("There is No Active '" + typeof(T) + "'in this Scene. It's not an error when the game crashed.");
             }
             else
             {

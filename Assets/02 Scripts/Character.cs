@@ -36,6 +36,11 @@ public class Character : MonoBehaviour
 			currentMaxSpeed = maxSpeed;
 		}
 
+		if(Input.GetKeyDown(KeyCode.Z))
+		{
+			TriggerManager.Instance.ChecKTrigger();
+		}
+
 		if (!IsRight() && Input.GetKey(KeyCode.LeftArrow))
 		{
 			animator.SetBool("isMoving", true);
