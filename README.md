@@ -1,6 +1,7 @@
 # SK-Project
 
 1. [Environment](##Environment)
+2. [에셋 폴더 구조](##에셋-폴더-구조)
 
 
 ## Environment
